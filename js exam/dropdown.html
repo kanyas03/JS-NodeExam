@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Dropdown</title>
+</head>
+<body>
+    
+    <div id="dropbox">
+       
+        <label > Expense Type:</label>
+        <select id="expensetype" onchange="handleDropdownChange()">
+            <option >Hospital Expense</option>
+            <option>Loan Expense</option>
+            <option>Electricity Expense</option>
+            <option>Water Bill Expense</option>
+            <option>Other</option>
+        </select>
+    </div>
+    <label>Amount :</label>
+    <input type="number" id="amount">
+    <label >Date</label>
+    <input type="date" id="date">
+    <button onclick="handlesumbit()">Submit</button>
+    <label>Month :</label>
+    <select onchange="">
+        <option ></option>
+        <option></option>
+        <option></option>
+        <option></option>
+        <option></option>
+    </select>
+    
+    
+
+    <script>
+        let expense=[];
+        let amount=[];
+        let date=[];
+        function handleDropdownChange() {
+            const dropdown = document.getElementById("expensetype");
+            const option = dropdown.value;
+            const dropbox = document.getElementById("dropbox"); 
+           
+            if (option === "other") {
+                const inputBox = document.createElement("input");
+                inputBox.type = "text";
+                inputBox.placeholder = "Enter your expense type";
+                dropbox.appendChild(inputBox);
+            }
+            
+        }
+        function handlesumbit() {
+            let expenseType = document.getElementById("expensetype").value;
+            let expenseAmount = document.getElementById("amount").value;
+            let expenseDate = document.getElementById("date").value;
+            if (expenseType.trim() === "" || expenseAmount === "" || expenseDate === "") {
+                alert("invalid input");
+                return;
+            }
+            expense.push(expenseType);
+            amount.push(expenseAmount);
+            date.push(expenseDate);
+            
+            document.write(`expense :${expense}<br> Amount:${amount}<br> date: ${date}`, )
+            
+        }
+    </script>
+</body>
+</html>
